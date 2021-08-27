@@ -1,3 +1,47 @@
 {
-  "extends": "next/core-web-vitals"
+  "root": true,
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": [
+    "next",
+    "plugin:react-hooks/recommended",
+    "airbnb"
+  ],
+  "globals": {
+      "Atomics": "readonly",
+      "SharedArrayBuffer": "readonly",
+      "React": "writable"
+  },
+  "parserOptions": {
+    "parser": "@babel/eslint-parser",
+    "allowImportExportEverywhere": true,
+    "ecmaVersion": 12,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "parser": "@babel/eslint-parser",
+  "plugins": ["react"],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "ignorePatterns": ["Sidebar.js", "SideBarWrapper.js"],
+  "rules": {
+      "no-restricted-imports": [
+        "error",
+        {
+          "patterns": ["@material-ui/*/*/*", "!@material-ui/core/test-utils/*"]
+        }
+      ],
+      "import/extensions": ["error", "never", { "svg": "always", "jpg": "always", "png": "always", "jpeg": "always", "json": "always", "scss": "always", "css": "always" }],
+      "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
+      "react-hooks/exhaustive-deps": 0 // Checks effect dependencies
+  }
 }
