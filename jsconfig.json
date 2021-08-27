@@ -1,19 +1,10 @@
 {
-  "typeAcquisition": {
-    "exclude": [ "dotenv" ]
-  },
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/elementsClient/*": ["elementsClient/*"],
-      "@/elementAdmin/*": ["elementAdmin/*"],
-      "@/components/*": ["components/*"],
-      "@/layouts/*": ["components/layouts/*"],
       "@/assets/*": ["assets/*"],
-      "@/img/*": ["assets/img/*"],
-      "useSocket": ["components/socketsIo/SocketUpdateComponent.js"],
-      "useSocketAdmin": ["components/socketsIo/SocketUpdateComponentAdmin.js"],
-      "components": ["component.js"]
+      "@/components/*": ["components/*"],
+      "globalState": ["assets/redux/redux.js"],
     }
   }
 }
