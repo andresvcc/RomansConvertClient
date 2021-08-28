@@ -4,6 +4,7 @@
     "paths": {
       "@/assets/*": ["assets/*"],
       "@/components/*": ["components/*"],
+      "@/styles/*": ["styles/*"],
       "globalState": ["assets/redux/redux.js"],
     }
   }

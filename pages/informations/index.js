@@ -21,8 +21,8 @@ export default function Home({ user }) {
       <pre>{JSON.stringify(sessions, null, 2)}</pre>
       <button type="button" onClick={add}>sdfsd</button>
 
-      <Link href="/informations">
-        to informations
+      <Link href="/">
+        To home
       </Link>
     </main>
   );
