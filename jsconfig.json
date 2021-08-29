@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
+    "experimentalDecorators": true,
+    "jsx": "react",
     "baseUrl": ".",
     "paths": {
       "@/assets/*": ["assets/*"],
       "@/components/*": ["components/*"],
-      "@/styles/*": ["styles/*"],
-      "globalState": ["assets/redux/redux.js"],
+      "@/styles/*": ["styles/*"]
     }
   }
 }
