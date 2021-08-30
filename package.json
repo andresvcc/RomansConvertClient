@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node bin/www",
     "build": "next build",
-    "start": "next start",
+    "start": "NODE_ENV=production node bin/www",
     "lint": "next lint"
   },
   "dependencies": {
@@ -13,6 +13,9 @@
     "@material-ui/icons": "^4.9.1",
     "@material-ui/styles": "^4.9.13",
     "axios": "^0.21.1",
+    "chalk": "^4.1.2",
+    "debug": "^4.3.2",
+    "express": "^4.17.1",
     "next": "11.1.0",
     "prop-types": "^15.7.2",
     "react": "17.0.2",

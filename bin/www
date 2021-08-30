@@ -1,0 +1,67 @@
+const chalk = require('chalk');
+
+const debug = require('debug')('server:server');
+
+const {
+  nextApp,
+  app,
+  dev
+} = require('../server');
+
+function normalizePort(val) {
+  const port = parseInt(val, 10);
+
+  if (Number.isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
+
+nextApp.prepare().then(() => {
+  const port = normalizePort(dev ? process.env.DEV_PORT : process.env.PORT);
+  const dateFormated = (new Date()).toLocaleDateString();
+
+  function onError(error) {
+    if (error.syscall !== 'listen') {
+      throw error;
+    }
+
+    const bind = typeof port === 'string'
+      ? `Pipe ${port}`
+      : `Port ${port}`;
+
+    // handle specific listen errors with friendly messages
+    switch (error.code) {
+      case 'EACCES':
+        console.error(`${bind} requires elevated privileges`);
+        process.exit(1);
+        break;
+      case 'EADDRINUSE':
+        console.error(`${bind} is already in use`);
+        process.exit(1);
+        break;
+      default:
+        throw error;
+    }
+  }
+
+  function onListening() {
+    const addr = app.address();
+    const bind = typeof addr === 'string'
+      ? `pipe ${addr}`
+      : `port ${addr.port}`;
+    debug(`Listening on ${bind}`);
+    console.log(addr, `${dev ? 'developpement' : 'production'} -> ${chalk.blue(`http://localhost:${addr.port}`)} ::: ${chalk.green(dateFormated)}`);
+  }
+
+  app.listen(port);
+  app.on('error', onError);
+  app.on('listening', onListening);
+});
