@@ -5,7 +5,9 @@ const debug = require('debug')('server:server');
 const {
   nextApp,
   app,
-  dev
+  dev,
+  nextHandler,
+  express
 } = require('../server');
 
 function normalizePort(val) {
@@ -60,6 +62,11 @@ nextApp.prepare().then(() => {
     debug(`Listening on ${bind}`);
     console.log(addr, `${dev ? 'developpement' : 'production'} -> ${chalk.blue(`http://localhost:${addr.port}`)} ::: ${chalk.green(dateFormated)}`);
   }
+
+  express.get('*', (req, res) => nextHandler(req, res));
+  express.post('*', (req, res) => nextHandler(req, res));
+  express.put('*', (req, res) => nextHandler(req, res));
+  express.delete('*', (req, res) => nextHandler(req, res));
 
   app.listen(port);
   app.on('error', onError);
